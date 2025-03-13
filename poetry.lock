@@ -376,14 +376,14 @@ crt = ["awscrt (==0.23.8)"]
 
 [[package]]
 name = "botocore-stubs"
-version = "1.37.10"
+version = "1.37.11"
 description = "Type annotations and code completion for botocore"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
-    {file = "botocore_stubs-1.37.10-py3-none-any.whl", hash = "sha256:a7e9acc0085cb42332f55a5e99b7e06ee7b18b8be6ac9ef7ad8dbac2a5c44145"},
-    {file = "botocore_stubs-1.37.10.tar.gz", hash = "sha256:e6183ca37b7b3b5c36daae38d44040858cf7ce69d02797d4d3d4d800985c10b4"},
+    {file = "botocore_stubs-1.37.11-py3-none-any.whl", hash = "sha256:bec458a0d054892cdf82466b4d075f30a36fa03ce34f9becbcace5f36ec674bf"},
+    {file = "botocore_stubs-1.37.11.tar.gz", hash = "sha256:9b89ba9a98eb9f088a5f82c52488013858092777c17b56265574bbf2d21da422"},
 ]
 
 [package.dependencies]
@@ -1844,7 +1844,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore 2.21.1 generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore-2.21.1-py3-none-any.whl", hash = "sha256:41034ca807698e666b53ecb45eaf42850161e6093c291a8f1f31536c970c1d0e"},
     {file = "types_aiobotocore-2.21.1.tar.gz", hash = "sha256:ad099710635a16a06df99d9aeb957e0c488358201dfff5f76f73f5ec2987fc3b"},
@@ -2275,7 +2275,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore CloudFormation 2.21.1 service generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore_cloudformation-2.21.1-py3-none-any.whl", hash = "sha256:4c3f307ec4dac531db82a9b1cb86ab363d82ddc4e9dce6b79a04988497b69504"},
     {file = "types_aiobotocore_cloudformation-2.21.1.tar.gz", hash = "sha256:ab4aab3749bf7c5a74748f8b7d20b9222b38d462d8b07cb5162394b0278ccbef"},
@@ -2290,7 +2290,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore DynamoDB 2.21.1 service generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore_dynamodb-2.21.1-py3-none-any.whl", hash = "sha256:98431097214367abc22e274c069693ed3b8b64f21fe50322e2cfd8c79624f67c"},
     {file = "types_aiobotocore_dynamodb-2.21.1.tar.gz", hash = "sha256:bf8befc54b7655ea55e1d1d4703e7a94be3ac9917b58918e4d789a570eb9e217"},
@@ -2305,7 +2305,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore EC2 2.21.1 service generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore_ec2-2.21.1-py3-none-any.whl", hash = "sha256:cb09a611f1dce55f0f80c89dc890654ecfbc080706c12c5a85e59d2f33167b48"},
     {file = "types_aiobotocore_ec2-2.21.1.tar.gz", hash = "sha256:c507ad4a6795d7fe7da375c57c6cdd0e6cc9aaafcf60eedee7d9358347e93021"},
@@ -2320,7 +2320,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore Lambda 2.21.1 service generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore_lambda-2.21.1-py3-none-any.whl", hash = "sha256:4444c2679774c0cadc59f84885bdbd3f704ba3f174170a5f86e292742f76159e"},
     {file = "types_aiobotocore_lambda-2.21.1.tar.gz", hash = "sha256:9a64cff10888ad268fc9c3df9f2db22f64023a6a53d38ab1cc053427fe513e46"},
@@ -2335,7 +2335,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore RDS 2.21.1 service generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore_rds-2.21.1-py3-none-any.whl", hash = "sha256:3e8570f74b652ed97273a5c77aa1917202e4dcb0c28ac53a1bd79603690108c6"},
     {file = "types_aiobotocore_rds-2.21.1.tar.gz", hash = "sha256:d9441bbb263a6b64cde25970a9ae4f2865d50b5b4e1dd09bfc8e516496618c14"},
@@ -2350,7 +2350,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore S3 2.21.1 service generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore_s3-2.21.1-py3-none-any.whl", hash = "sha256:64b04b7729a3322e4758401e722c21277aa0e798c00d0077c4f43a9f584858fd"},
     {file = "types_aiobotocore_s3-2.21.1.tar.gz", hash = "sha256:5c8a68b78d577006062de4c158bd902eab2c38e81570be5bac0227375f9d8153"},
@@ -2365,7 +2365,7 @@ version = "2.21.1"
 description = "Type annotations for aiobotocore SQS 2.21.1 service generated with mypy-boto3-builder 8.10.0"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_aiobotocore_sqs-2.21.1-py3-none-any.whl", hash = "sha256:c593349a2b4d9f2e145993408a16df7871b857f46286e9816553c46a1896a937"},
     {file = "types_aiobotocore_sqs-2.21.1.tar.gz", hash = "sha256:180364c4efd05c60498c3294297e8b359559598b2c51fb6a449178f5634f8e18"},
@@ -2380,7 +2380,7 @@ version = "0.24.1"
 description = "Type annotations and code completion for awscrt"
 optional = false
 python-versions = ">=3.8"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "types_awscrt-0.24.1-py3-none-any.whl", hash = "sha256:f3f2578ff74a254a79882b95961fb493ba217cebc350b3eb239d1cd948d4d7fa"},
     {file = "types_awscrt-0.24.1.tar.gz", hash = "sha256:fc6eae56f8dc5a3f8cc93cc2c7c332fa82909f8284fbe25e014c575757af397d"},
@@ -2847,4 +2847,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11"
-content-hash = "fe62faf94141f5a989f4d716e89ec716fe32d926c0fc7c7cf046dd9bb4e38f53"
+content-hash = "94103758b11687e6cd949341ee16e60426b29b093689e1cc97de7b61683b7c3a"
