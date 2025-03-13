@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any
 
-from pydantic import BaseModel, Field, AliasPath
+from pydantic import BaseModel
 
 from src.models.devices import DeviceType
 from src.schemas.analytics_modules import ModuleRetrieve

@@ -95,6 +95,3 @@ async def devices_delete(
     device_service: Annotated[DeviceService, Depends()],
 ) -> None:
     await device_service.delete(device_id)
-
-
-# TODO: POST Add file to archive

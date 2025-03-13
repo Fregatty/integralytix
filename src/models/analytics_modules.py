@@ -21,6 +21,11 @@ class AnalyticsModule(Base):
         back_populates="module"
     )
     events: Mapped[list["ModuleEvent"]] = relationship(back_populates="module")
+    connected_devices: Mapped[list["Device"]] = relationship(
+        secondary="module_device_association",
+        viewonly=True,
+        back_populates="connected_modules",
+    )
 
 
 class AnalyticsModuleDevice(Base):

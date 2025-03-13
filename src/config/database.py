@@ -1,3 +1,5 @@
+from typing import AsyncGenerator
+
 from sqlalchemy import MetaData
 from sqlalchemy.ext.asyncio import (
     create_async_engine,
@@ -36,7 +38,7 @@ AsyncSessionLocal: async_sessionmaker[AsyncSession] = async_sessionmaker(
 
 
 # Dependency to get DB session
-async def get_db_session() -> AsyncSession:
+async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
         yield session
         await session.close()

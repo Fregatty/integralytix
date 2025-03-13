@@ -37,6 +37,7 @@ class BaseService(Generic[ModelType]):
                 status_code=404,
                 detail=f"{self.model.__name__} with id {obj_id} not found",
             )
+        await self.session.commit()
         return result
 
     async def create(self, obj_in: PydanticModelType) -> ModelType:

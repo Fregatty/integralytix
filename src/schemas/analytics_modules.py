@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict
 
-from src.models.consts import ModuleType
+from src.consts import ModuleType
 
 
 class BaseModule(BaseModel):

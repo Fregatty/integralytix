@@ -4,7 +4,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.models import Base, Device, AnalyticsModule
-from src.models.consts import EventPriority
+from src.consts import EventPriority
 
 
 class ModuleEvent(Base):

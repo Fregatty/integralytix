@@ -2,7 +2,7 @@ from datetime import datetime
 from enum import Enum
 from typing import TYPE_CHECKING
 
-from sqlalchemy import func, JSON, ForeignKey
+from sqlalchemy import func, JSON, ForeignKey, TIMESTAMP
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 
 from src.config.database import Base
@@ -34,7 +34,9 @@ class Device(Base):
         back_populates="device"
     )
     connected_modules: Mapped[list["AnalyticsModule"]] = relationship(
-        secondary="module_device_association", viewonly=True
+        secondary="module_device_association",
+        viewonly=True,
+        back_populates="connected_devices",
     )
 
 
@@ -43,9 +45,9 @@ class DeviceFileArchive(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     device_id: Mapped[int] = mapped_column(ForeignKey("devices_device.id"))
-    filepath: Mapped[str] = mapped_column()
+    filepath: Mapped[str | None] = mapped_column()
     is_deleted: Mapped[bool] = mapped_column(server_default="false")
-    timestamp_start: Mapped[datetime] = mapped_column()
-    timestamp_end: Mapped[datetime] = mapped_column()
+    timestamp_start: Mapped[datetime] = mapped_column(type_=TIMESTAMP(timezone=True))
+    timestamp_end: Mapped[datetime] = mapped_column(type_=TIMESTAMP(timezone=True))
 
     device: Mapped["Device"] = relationship(back_populates="archive_files")

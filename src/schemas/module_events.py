@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel
 
-from src.models.consts import EventPriority
+from src.consts import EventPriority
 
 
 class EventBase(BaseModel):
