@@ -40,5 +40,7 @@ AsyncSessionLocal: async_sessionmaker[AsyncSession] = async_sessionmaker(
 # Dependency to get DB session
 async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
-        yield session
-        await session.close()
+        try:
+            yield session
+        finally:
+            await session.close()

@@ -1,4 +1,5 @@
 import asyncio
+import os
 from logging.config import fileConfig
 
 from sqlalchemy import pool
@@ -27,7 +28,11 @@ target_metadata = Base.metadata
 # my_important_option = config.get_main_option("my_important_option")
 from src.config.project_settings import settings
 
-config.set_main_option("sqlalchemy.url", str(settings.pg_url))
+if os.environ.get("TESTING"):
+    DATABASE_URL = str(settings.test_db_url)
+else:
+    DATABASE_URL = str(settings.pg_url)
+config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 
 def run_migrations_offline() -> None:

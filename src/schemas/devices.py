@@ -28,7 +28,7 @@ class DeviceUpdate(DeviceBase):
     device_type: DeviceType | None = None
     name: str | None = None
     source: str | None = None
-    additional_settings: dict[str, Any] | None = None
+    additional_settings: dict[str, Any] | None = {}
 
 
 class DeviceRetrieveWithModules(DeviceRetrieve):
