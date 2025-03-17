@@ -2,12 +2,13 @@ from contextlib import asynccontextmanager
 from typing import Annotated, BinaryIO
 
 import aiobotocore.session
+from botocore.exceptions import ClientError
 from fastapi import Depends
 from types_aiobotocore_s3.client import S3Client
 
 from src.config.project_settings import Settings, get_settings
-from src.infrastructure.storage.base import FileStorage
 from src.consts import StorageType
+from src.infrastructure.storage.base import FileStorage
 
 
 class S3StorageClient(FileStorage):
@@ -38,8 +39,12 @@ class S3StorageClient(FileStorage):
 
     async def get_file(self, path):
         async with self.get_client() as client:
-            response = await client.get_object(Bucket=self.bucket_name, Key=path)
-            return await response["Body"].read()
+            try:
+                response = await client.get_object(Bucket=self.bucket_name, Key=path)
+                return await response["Body"].read()
+            except ClientError as e:
+                if e.response["Error"]["Code"] == "NoSuchKey":
+                    return None
 
     async def delete_file(self, path):
         async with self.get_client() as client:

@@ -46,4 +46,15 @@ class ArchiveService(BaseService[DeviceFileArchive]):
                 detail=f"This instance has no file",
             )
         file = await storage.get_file(instance.filepath)
-        yield file
+
+        if file is None:
+            raise HTTPException(
+                status_code=404,
+                detail="File not found in storage",
+            )
+
+        # TODO: Fix this mess somehow?
+        async def file_generator():
+            yield file
+
+        return file_generator()

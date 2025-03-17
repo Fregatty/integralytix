@@ -55,9 +55,13 @@ async def download_file(
 ):
     archive_instance = await archive_service.get_by_id(archive_id)
 
+    file_generator = await archive_service.download_file(archive_instance, storage)
     return StreamingResponse(
-        archive_service.download_file(archive_instance, storage),
-        media_type="image/jpeg",
+        file_generator,
+        media_type="application/octet-stream",
+        headers={
+            "Content-Disposition": f"attachment; filename={archive_instance.filepath}"
+        },
     )
 
 

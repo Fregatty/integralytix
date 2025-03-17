@@ -1,15 +1,10 @@
-from typing import Annotated, Sequence, TypeVar, Generic, Type
+from typing import Sequence, TypeVar, Generic, Type
 
-from fastapi import Depends
 from pydantic import BaseModel
-from sqlalchemy import Select, select
+from sqlalchemy import Select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import DeclarativeBase
 from starlette.exceptions import HTTPException
-
-from src.config.database import get_db_session
-from src.models.devices import Device
-from src.schemas.devices import DeviceCreate, DeviceUpdate
 
 ModelType = TypeVar("ModelType", bound=DeclarativeBase)
 PydanticModelType = TypeVar("PydanticModelType", bound=BaseModel)

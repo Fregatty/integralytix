@@ -17,7 +17,7 @@ async def modules_list(
 
 
 @router.get(
-    "/{module_id}",
+    "/{module_id}/",
     response_model=ModuleRetrieve,
     responses={404: {"description": "Not found", "model": ErrorMessage}},
 )
@@ -37,7 +37,7 @@ async def modules_create(
 
 
 @router.put(
-    "/{module_id}",
+    "/{module_id}/",
     response_model=ModuleRetrieve,
     responses={404: {"description": "Not found", "model": ErrorMessage}},
 )
@@ -50,7 +50,7 @@ async def modules_update(
 
 
 @router.delete(
-    "/{module_id}",
+    "/{module_id}/",
     response_model=None,
     status_code=204,
     responses={404: {"description": "Not found", "model": ErrorMessage}},

@@ -3,7 +3,6 @@ from datetime import datetime
 import pytest
 from httpx import AsyncClient
 from starlette import status
-from src.main import app
 
 
 @pytest.mark.asyncio(loop_scope="session")

@@ -1,3 +1,4 @@
+import datetime
 import os
 import pathlib
 import sys
@@ -17,9 +18,11 @@ from sqlalchemy.ext.asyncio import (
 from src.config.database import get_db_session
 from src.config.project_settings import settings
 from src.consts import ModuleType
+from src.infrastructure.storage.minio_s3 import get_file_storage
 from src.main import app
 from src.models import Device, AnalyticsModule
-from src.models.devices import DeviceType
+from src.models.devices import DeviceType, DeviceFileArchive
+from tests.mocks.fake_storage import FakeFileStorage
 
 sys.dont_write_bytecode = True
 
@@ -63,6 +66,10 @@ async def _get_test_db_session():
             await session.close()
 
 
+def _get_test_file_storage():
+    return FakeFileStorage()
+
+
 @pytest.fixture()
 async def db_session():
     test_engine: AsyncEngine = create_async_engine(url=str(settings.test_db_url))
@@ -80,11 +87,11 @@ async def db_session():
 @pytest.fixture()
 async def http_client() -> AsyncClient:
     app.dependency_overrides[get_db_session] = _get_test_db_session
+    app.dependency_overrides[get_file_storage] = _get_test_file_storage
     async with AsyncClient(
         transport=ASGITransport(app=app),
         base_url="http://testserver",
         # base_url="http://127.0.0.1",
-        headers={"Content-Type": "application/json"},
     ) as client:
         yield client
     app.dependency_overrides = {}
@@ -125,5 +132,37 @@ async def fake_module(db_session):
             module_type=ModuleType.PEOPLE_COUNTER.value,
         )
         session.add(module)
+        await session.commit()
+    yield
+
+
+@pytest.fixture()
+async def fake_file_archive(db_session, fake_device):
+    async with db_session() as session:
+        name: str
+
+        instance = DeviceFileArchive(
+            device_id=1,
+            filepath="correct_filepath",
+            timestamp_start=datetime.datetime.now(tz=datetime.UTC),
+            timestamp_end=datetime.datetime.now(tz=datetime.UTC),
+        )
+        session.add(instance)
+        await session.commit()
+    yield
+
+
+@pytest.fixture()
+async def fake_file_archive_without_file(db_session, fake_device):
+    async with db_session() as session:
+        name: str
+
+        instance = DeviceFileArchive(
+            device_id=1,
+            filepath="",
+            timestamp_start=datetime.datetime.now(tz=datetime.UTC),
+            timestamp_end=datetime.datetime.now(tz=datetime.UTC),
+        )
+        session.add(instance)
         await session.commit()
     yield
