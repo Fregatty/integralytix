@@ -4,7 +4,6 @@ from typing import Annotated, BinaryIO
 import aiobotocore.session
 from botocore.exceptions import ClientError
 from fastapi import Depends
-from types_aiobotocore_s3.client import S3Client
 
 from src.config.project_settings import Settings, get_settings
 from src.consts import StorageType
@@ -48,7 +47,6 @@ class S3StorageClient(FileStorage):
 
     async def delete_file(self, path):
         async with self.get_client() as client:
-            client: S3Client
             await client.delete_object(
                 Bucket=self.bucket_name,
                 Key=path,
