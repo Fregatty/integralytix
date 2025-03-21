@@ -1,7 +1,11 @@
+import json
 from typing import Annotated
 
+import redis.asyncio as redis
 from fastapi import APIRouter, Depends
+from fastapi.encoders import jsonable_encoder
 
+from src.external_services.redis.redis import get_redis
 from src.schemas.analytics_modules import ModuleRetrieve
 from src.schemas.devices import (
     DeviceRetrieve,
@@ -59,8 +63,17 @@ async def connect_module(
 async def devices_retrieve(
     device_id: int,
     device_service: Annotated[DeviceService, Depends()],
+    redis_client: Annotated[redis.Redis, Depends(get_redis)],
 ):
+    if found_obj := await redis_client.get(f"device:{device_id}"):
+        return json.loads(found_obj)
+
     device = await device_service.get_by_id(device_id)
+
+    await redis_client.setex(
+        f"device:{device_id}", 100, json.dumps(jsonable_encoder(device))
+    )
+
     return device
 
 

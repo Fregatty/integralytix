@@ -28,7 +28,6 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - prometheus
       - postgres
     env_file:
       - .env
@@ -42,6 +41,8 @@ services:
       - "9090:9090"
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+    depends_on:
+      - fastapi
 
   grafana:
     image: grafana/grafana
@@ -53,8 +54,18 @@ services:
     depends_on:
       - prometheus
 
+  redis:
+    image: redis/redis-stack
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    volumes:
+      - redis_data:/data
+
+
 volumes:
     pgdata:
     minio_storage:
     prometheus:
     grafana_data:
+    redis_data:

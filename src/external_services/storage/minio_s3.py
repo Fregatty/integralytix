@@ -7,7 +7,7 @@ from fastapi import Depends
 
 from src.config.project_settings import Settings, get_settings
 from src.consts import StorageType
-from src.infrastructure.storage.base import FileStorage
+from src.external_services.storage.base import FileStorage
 
 
 class S3StorageClient(FileStorage):

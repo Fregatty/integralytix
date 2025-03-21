@@ -3,8 +3,8 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, UploadFile, File
 from starlette.responses import StreamingResponse
 
-from src.infrastructure.storage.base import FileStorage
-from src.infrastructure.storage.minio_s3 import get_file_storage
+from src.external_services.storage.base import FileStorage
+from src.external_services.storage.minio_s3 import get_file_storage
 from src.schemas.file_archive import (
     DeviceFileArchiveRetrieve,
     DeviceFileArchiveCreate,

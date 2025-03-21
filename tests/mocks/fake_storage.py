@@ -1,6 +1,6 @@
 from typing import BinaryIO
 
-from src.infrastructure.storage.base import FileStorage
+from src.external_services.storage.base import FileStorage
 
 
 class FakeFileStorage(FileStorage):

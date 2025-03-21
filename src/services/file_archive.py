@@ -4,7 +4,7 @@ from fastapi import Depends, UploadFile, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.config.database import get_db_session
-from src.infrastructure.storage.base import FileStorage
+from src.external_services.storage.base import FileStorage
 from src.models import DeviceFileArchive
 from src.services.base import BaseService
 

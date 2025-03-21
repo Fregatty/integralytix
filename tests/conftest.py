@@ -18,7 +18,7 @@ from sqlalchemy.ext.asyncio import (
 from src.config.database import get_db_session
 from src.config.project_settings import settings
 from src.consts import ModuleType
-from src.infrastructure.storage.minio_s3 import get_file_storage
+from src.external_services.storage.minio_s3 import get_file_storage
 from src.main import app
 from src.models import Device, AnalyticsModule
 from src.models.devices import DeviceType, DeviceFileArchive
